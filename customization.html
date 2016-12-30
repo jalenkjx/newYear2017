@@ -1,0 +1,277 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<title></title>
+		<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+		<script>
+			var winWidth = window.innerWidth;
+			var fontSize = winWidth/750*100;
+			var html = document.documentElement;
+			html.style.fontSize = fontSize + "px";
+			window.onresize = function(){
+				var winWidth = window.innerWidth;
+				var fontSize = winWidth/750*100;
+				var html = document.documentElement;
+				html.style.fontSize = fontSize + "px";
+			}
+		</script>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+				border:none;
+			}
+			li{
+				list-style: none;
+			}
+			img{
+				display:block;
+				width:100%;
+			}
+			.wrapper{
+				background:#efefef;
+			}
+			h2{
+				font-size:.5rem;
+				height:1rem;
+				width:100%;
+				text-align: center;
+				line-height:1rem;
+				box-sizing: border-box;
+			}
+			h2 img{
+				width:100%;
+			}
+			h2 span{
+				display:inline-block;
+				text-align: center;
+				height:1rem;
+				font-size:.3rem;
+				line-height:1rem;
+			}
+			
+			ul{
+				overflow:hidden;
+			}
+			ul li{
+				width:3.65rem;
+				float:left;
+				background:#fff;
+				margin-bottom:.2rem;
+			}
+			ul li:nth-child(even){
+				margin-left:.2rem;
+			}
+			li .goodsInfo{
+				margin-top:.1rem;
+				height: .7rem;
+			    display: -webkit-box;
+			    -webkit-box-orient: vertical;
+			    -webkit-line-clamp: 2;
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			    white-space: normal;
+			    font-size:.24rem;
+			    line-height: .35rem;
+			    padding:0 .2rem;
+			    margin-bottom:.2rem;
+			    
+			}
+			li .price{
+				font-size:.24rem;
+				box-sizing: border-box;
+				padding-left:.2rem;
+				padding-bottom:.3rem;
+				position:relative;
+			}
+			.price span{
+				display:inline-block;
+				font-size:.32rem;
+				line-height:.42rem;
+			}
+			.price button{
+				width:1.2rem;
+				height:.42rem;
+				border:1px solid #e31436;
+				border-radius: .1rem;
+				background:#fff;
+				color:#E31436;
+				position:absolute;
+				right:.2rem;
+				bottom:.3rem;
+				font-size:.22rem;
+			}
+			.backnav{
+				width:.92rem;
+				height:2.4rem;
+				position:fixed;
+				right:0;
+				top:6rem;
+				z-index: 99;
+				
+			}
+			.backnavopen{
+				width:3.35rem;
+				height:8.35rem;
+				position:fixed;
+				right:0;
+				top:3rem;
+				z-index: 99;
+			}
+			.backnavopen a{
+				display:block;
+				width:2.6rem;
+				height:.3rem;
+				position:absolute;
+				left:0.5rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<img src="http://og20zwqwb.bkt.clouddn.com/newyear_customization.jpg" alt="" />
+			</header>
+			<h2><span>--&nbsp;新年值得买&nbsp;--</span></h2>
+			<section>
+				<ul>
+					<!--<li data-id="33153">
+						<div class="imgbox"><img src="http://img.myzhenzhen.com/33153-good-thumb-1.jpg" alt="" /></div>
+						<p class="goodsInfo">德国 Hipp喜宝婴幼儿营养辅食 杏仁果汁 200ml</p>
+						<div class="price">
+							￥<span>25</span><button>立即购买</button>
+						</div>
+					</li>-->
+				</ul>
+			</section>
+			<div class="backnav">
+				<img src="http://og20zwqwb.bkt.clouddn.com/newyear_backnav.png" alt="" />
+			</div>
+			<div class="backnavopen" style="display:none;">
+				<img src="http://og20zwqwb.bkt.clouddn.com/newyear_backnavopen.png" alt="" />
+				<a href="#" style="top:1.95rem;"></a>
+				<a href="self_sell.html" style="top:2.4rem;"></a>
+				<a href="yanna.html" style="top:2.85rem;"></a>
+				<a href="huggies.html" style="top:3.3rem;"></a>
+				<a href="whoo.html" style="top:3.8rem;"></a>
+				<a href="newyear2017.html#baby" style="top:4.25rem;"></a>
+				<a href="newyear2017.html#cosmestic" style="top:4.75rem;"></a>
+				<a href="newyear2017.html#nutrition" style="top:5.15rem;"></a>
+				<a href="newyear2017.html#luxurious" style="top:5.7rem;"></a>
+				<a href="newyear2017.html#life" style="top:6.15rem;"></a>
+				<a href="javascript:;" style="top:6.6rem; height:.4rem" id="close"></a>
+			</div>
+		</div>
+	</body>
+	<script>
+	
+	
+		
+		//var api = 'http://192.168.199.127/zzht/';
+		var api = 'http://service.myzhenzhen.com/zzht/';
+		//var imgLink = 'http://o6uda1nl0.bkt.clouddn.com/';//内网
+		var imgLink = 'http://img.myzhenzhen.com/';//外网
+		//获取url中的参数
+		$('.backnav').on('click',function(){
+			$(this).css('display','none');
+			$('.backnavopen').css('display','block');
+		})
+		$('#close').on('click',function(){
+			$(this).parent().css('display','none');
+			$('.backnav').css('display','block');
+		})
+		
+		//js与ios交互	
+			function setupWebViewJavascriptBridge(callback) {
+		        if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+		        if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+		        window.WVJBCallbacks = [callback];
+		        var WVJBIframe = document.createElement('iframe');
+		        WVJBIframe.style.display = 'none';
+		        WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+		        document.documentElement.appendChild(WVJBIframe);
+		        setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+		   }
+		//检测终端是安卓或ios
+        var u = navigator.userAgent;
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		$.ajax({
+			type:"post",
+			url:api+"v1/api/querySubject/queryGoods",
+			data:{
+				'activityId':1182
+			},
+			headers:{
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			success:function(res){
+				console.log(res.datas);
+				var data = res.datas;
+				$.each(data,function(i){
+					var html = '<li data-id="'+data[i].goodId+'">'+
+									'<div class="imgbox"><img src="'+imgLink+data[i].goodsImages[2].imgName+'" alt="" /></div>'+
+									'<p class="goodsInfo">'+data[i].name+'</p>'+
+									'<div class="price">'+
+										'￥<span>'+data[i].price+'</span><button>立即购买</button>'+
+									'</div>'+
+								'</li>';
+					$('ul').append(html);
+				})
+				
+				if(isAndroid){
+					$('li','ul').on('click',function(e){
+						var goodid= $(this).attr('data-id');
+						console.log(goodid)
+						//与安卓终端交互
+						window.WebViewJavascriptBridge.callHandler('testObjcCallback',{
+							'good_id':goodid,
+							"detailData":{
+								    "bannerImg" : "http://img.myzhenzhen.com/popular_bn.png",
+								    "height" : 287,
+								    "layout" : "grid",
+								    "link" : "to_goods_"+goodid,
+								    "linkType" : "app-inner",
+								    "name" : "to_goods_"+goodid,
+								    "position" : "4",
+								    "title" : "今日特惠",
+								    "type" : "nav",
+								    "url" : "http://ogb5d8crf.bkt.clouddn.com/home_nav_icon_h5_yg_196.png",
+								    "width" : 212
+								}
+							
+						}, function(response) {})
+						e.preventDefault();
+						return false;
+					});
+				}else{
+					setupWebViewJavascriptBridge(function(bridge) {
+						$('li','ul').on('click',function(e){
+							//alert('iphone');
+							var goodid=$(this).attr('data-id');
+							console.log(goodid);
+							e.preventDefault()
+							bridge.callHandler('testObjcCallback',{
+								'good_id':goodid,
+								"detailData":{
+								    "bannerImg" : "http://img.myzhenzhen.com/popular_bn.png",
+								    "height" : 287,
+								    "layout" : "grid",
+								    "link" : "to_goods_"+goodid,
+								    "linkType" : "app-inner",
+								    "name" : "to_goods_"+goodid,
+								    "position" : "4",
+								    "title" : "今日特惠",
+								    "type" : "nav",
+								    "url" : "http://ogb5d8crf.bkt.clouddn.com/home_nav_icon_h5_yg_196.png",
+								    "width" : 212
+								}
+							}, function(response) {})
+						});
+					})
+				}	
+			}
+		});
+	</script>
+</html>
